@@ -1,0 +1,38 @@
+[project]
+name = "whychanged"
+version = "0.1.0"
+description = "Why did this metric change? Exact drivers (rate vs mix), noise-aware, from your own database."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml>=6",
+    "sqlglot>=25",
+    "duckdb>=1.0",
+]
+keywords = ["analytics", "metrics", "root-cause", "decomposition", "duckdb", "llm"]
+
+[project.optional-dependencies]
+llm = ["openai>=1.40"]
+postgres = ["psycopg[binary]>=3.1"]
+
+[project.scripts]
+whychanged = "whychanged.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

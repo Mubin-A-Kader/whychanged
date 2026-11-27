@@ -1,0 +1,35 @@
+# Measures for the example SaaS dataset (signups.csv).
+#
+#   whychanged examples/saas/measures.yaml trial_conversion \
+#     --csv signups=examples/saas/signups.csv --period 2026-10 --today 2026-11-05
+
+calendar:
+  fiscal_year_start_month: 1
+
+dimensions:
+  channel:
+    label: Channel
+    expr: s.channel
+  country:
+    label: Country
+    expr: s.country
+  plan:
+    label: Plan
+    expr: s.plan
+
+measures:
+  - id: signups
+    name: Trial signups
+    from: signups s
+    date: s.created_at
+    count: s.id
+    dimensions: [channel, country, plan]
+
+  - id: trial_conversion
+    name: Trial conversion
+    description: Share of trial signups that became paying customers.
+    from: signups s
+    date: s.created_at
+    count: s.id
+    hit: s.converted
+    dimensions: [channel, country, plan]
