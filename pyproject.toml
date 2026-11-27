@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Why did this metric change? Exact drivers (rate vs mix), noise-aware, from your own database."
 readme = "README.md"
 requires-python = ">=3.10"
+license = "MIT"
 dependencies = [
     "pyyaml>=6",
     "sqlglot>=25",

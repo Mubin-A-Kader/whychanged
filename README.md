@@ -137,3 +137,7 @@ uv run pytest
 - dbt / Cube metric adapters
 - MCP server, so agents can ask "why did X change?"
 - Funnels: assigning a change to each step
+
+## License
+
+MIT, see [LICENSE](LICENSE).
